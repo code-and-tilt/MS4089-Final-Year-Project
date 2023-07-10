@@ -1,0 +1,10 @@
+pylint
+pytest
+pytest-cov
+click
+black
+pyspark
+matplotlib
+pandas
+numpy
+scipy
