@@ -11,7 +11,7 @@ for files in os.listdir(rootDirectory):
         filePath = os.path.join(rootDirectory, files)
         data = pd.read_csv(filePath, encoding="latin-1", sep=",").iloc[
             0:19110
-        ]  # max 19110 rows
+        ]
         df.append(data)
 
 df = pd.concat(df).reset_index(drop=True)
@@ -28,4 +28,4 @@ df.dropna(inplace=True)
 print(df)
 
 ## Store data in csv in rootDirectory
-df.to_csv(rootDirectory + "/preheated.csv", index=False)
+df.to_csv(rootDirectory + "/PH300.csv", index=False)
