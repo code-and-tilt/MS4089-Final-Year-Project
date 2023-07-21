@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-rootDirectory = "/Users/kanghao/Code/MS4089/datasets/thermal data/benchmark2"
+rootDirectory = "/Users/kanghao/Code/MS4089/datasets/thermocouple data/interlayer cooled"
 
 df = []
 
@@ -24,8 +24,7 @@ df["TimeDiff"] = df["Time"].str.replace(":", "")
 df["TimeDiff"] = pd.to_numeric(df["TimeDiff"].iloc[0:-1])  # convert to numeric
 df["CENTRAL [°C]"] = df["CENTRAL [°C]"].astype(str)
 df["TimeDiffTranslated"] = df["TimeDiff"] - df["TimeDiff"].min()
-
 print(df)
 
 ## Store data in csv in rootDirectory
-df.to_csv(rootDirectory + "/benchmark2.csv", index=False)
+df.to_csv(rootDirectory + "/ILC-200.csv", index=False)
