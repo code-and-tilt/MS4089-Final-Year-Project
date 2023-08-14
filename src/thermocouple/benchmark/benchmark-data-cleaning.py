@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-rootDirectory = "/Users/kanghao/Code/MS4089/datasets/thermal data/benchmark2"
+rootDirectory = "/Users/kanghao/Code/MS4089/datasets/thermocouple data/BM1 9 May 23"
 
 df = []
 
@@ -21,11 +21,11 @@ df.drop(df.tail(2).index, inplace=True)  # drop last 2 rows for the labels in th
 
 # Clean the data
 df["TimeDiff"] = df["Time"].str.replace(":", "")
-df["TimeDiff"] = pd.to_numeric(df["TimeDiff"].iloc[0:-1])  # convert to numeric
+df["TimeDiff"] = pd.to_numeric(df["TimeDiff"].iloc[0:len(df)])  # convert to numeric
 df["CENTRAL [°C]"] = df["CENTRAL [°C]"].astype(str)
 df["TimeDiffTranslated"] = df["TimeDiff"] - df["TimeDiff"].min()
 
 print(df)
 
 ## Store data in csv in rootDirectory
-df.to_csv(rootDirectory + "/benchmark2.csv", index=False)
+df.to_csv(rootDirectory + "/BM1.csv", index=False)
