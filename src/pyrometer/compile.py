@@ -4,7 +4,7 @@ import os
 
 
 df = []
-rootDirectory = "/Users/kanghao/Code/MS4089/datasets/pyrometer"
+rootDirectory = "/Users/kanghao/Code/MS4089/datasets/pyrometer data"
 for files in os.listdir(rootDirectory):
     if files.endswith(".txt"):
         filePath = os.path.join(rootDirectory, files)
@@ -28,7 +28,7 @@ df = df.drop(df[df['Two color temperature'] == -999.90].index)
 df.reset_index(drop=True, inplace=True)
 
 # add time column with 0.1s gap
-df["Peak hold time"] = np.linspace(start=0.1, 
+df["Peak hold time"] = np.linspace(start=0, 
                              stop=0.1*len(df), 
                              num=len(df),
                              endpoint=False)
@@ -40,4 +40,4 @@ data = df[cols]
 
 
 # Rename file name to store in the folder within datasets
-data.to_csv(rootDirectory + "/IN300.csv", index=False)
+data.to_csv(rootDirectory + "/BM2.csv", index=False)
