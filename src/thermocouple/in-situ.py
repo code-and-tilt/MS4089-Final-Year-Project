@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-rootDirectory = "/Users/kanghao/Code/MS4089/datasets/thermal data/benchmark"
+rootDirectory = "/Users/kanghao/Code/MS4089/datasets/thermocouple data/IN300_2 10 Aug 23"
 
 df = []
 
@@ -11,7 +11,7 @@ for files in os.listdir(rootDirectory):
         filePath = os.path.join(rootDirectory, files)
         data = pd.read_csv(filePath, encoding="latin-1", sep=",").iloc[
             0:19110
-        ]  # max 19110 rows
+        ] 
         df.append(data)
 
 df = pd.concat(df).reset_index(drop=True)
@@ -21,11 +21,11 @@ df.drop(df.tail(2).index, inplace=True)  # drop last 2 rows for the labels in th
 
 # Clean the data
 df["TimeDiff"] = df["Time"].str.replace(":", "")
-df["TimeDiff"] = pd.to_numeric(df["TimeDiff"].iloc[0:-1])  # convert to numeric
+df["TimeDiff"] = pd.to_numeric(df["TimeDiff"].iloc[0:len(df)])  # convert to numeric
 df["CENTRAL [°C]"] = df["CENTRAL [°C]"].astype(str)
 df["TimeDiffTranslated"] = df["TimeDiff"] - df["TimeDiff"].min()
 
 print(df)
 
 ## Store data in csv in rootDirectory
-df.to_csv(rootDirectory + "/benchmark.csv", index=False)
+df.to_csv(rootDirectory + "/IN300_2.csv", index=False)

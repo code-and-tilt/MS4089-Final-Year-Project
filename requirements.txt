@@ -4,6 +4,7 @@ pytest-cov
 click
 black
 pyspark
+polars
 matplotlib
 pandas
 numpy

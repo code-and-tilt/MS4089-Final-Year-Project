@@ -1,0 +1,5 @@
+outs:
+- md5: 3eb6df258e83e57354bf4e733b8f49a9.dir
+  size: 140453096
+  nfiles: 45
+  path: pyrometer data
